@@ -1,0 +1,25 @@
+@Library("shared") _
+pipeline{
+    agent {label "hello"}
+    stages{
+        stage("clone"){
+            steps{
+            script{
+                clone("https://github.com/YashwanthReddy2807/demo-jenkins-cicd.git","main")
+            }
+        }}
+        
+        stage("lib"){
+            steps{
+                script{
+                    hello()
+                }
+            }
+        }
+        stage("hello"){
+            steps{
+                echo "hello"
+            }
+        }
+    }
+}
